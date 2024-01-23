@@ -11,4 +11,4 @@ docker run -it --net=host --gpus all --privileged \
     --volume="$(pwd)/catkin_ws:/root/catkin_ws:rw" \
     --name ros_noetic \
     --device=/dev/dri:/dev/dri \
-    ros_docker:ros_noetic_nvidia 
+    ros_docker:ros_noetic_nvidia zsh
