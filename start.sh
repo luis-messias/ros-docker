@@ -2,6 +2,7 @@
 ./kill_all.sh
 
 xhost +
+mkdir -p "$(pwd)/catkin_ws/src"
 docker run -it --net=host --gpus all --privileged \
     --env="NVIDIA_DRIVER_CAPABILITIES=all" \
     --env="DISPLAY" \
