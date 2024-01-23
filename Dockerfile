@@ -27,4 +27,4 @@ RUN apt-get update  && apt-get install mesa-utils
 WORKDIR /root/catkin_ws
 RUN apt install git zsh curl -y
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
-RUN echo "source /opt/ros/noetic/setup.zsh" >> ~/.zshrc
+COPY config_files/.zshrc /root/.zshrc
