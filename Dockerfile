@@ -16,3 +16,9 @@ RUN rosdep init \
  && rosdep fix-permissions \
  && rosdep update
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+
+RUN apt-get install -y xserver-xorg-video-all
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libgl1-mesa-dri \
+    && rm -rf /var/lib/apt/lists/*
