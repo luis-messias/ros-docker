@@ -1,4 +1,5 @@
 #!/bin/bash
+
 build() {
     docker build -t ros_docker:ros_noetic_nvidia .
 }
@@ -44,6 +45,13 @@ while [ $# -gt 0 ]; do
     -a|--attach_shell)
       attach_shell
       shift
+      ;;
+    --all)
+      kill
+      build
+      start
+      attach_shell
+      exit 0
       ;;
     *)
       echo Agumento inválido ["$1"]
