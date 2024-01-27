@@ -17,7 +17,7 @@ start() {
         --env="DISPLAY" \
         --env="QT_X11_NO_MITSHM=1" \
         --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-        --volume="$(pwd)/${DOCKERFILE}_ws:/root/catkin_ws:rw" \
+        --volume="$(pwd)/Workspaces/${DOCKERFILE}_ws:/root/catkin_ws:rw" \
         -v ~/.gitconfig:/etc/gitconfig \
         --name ${DOCKERFILE} \
         --device=/dev/dri:/dev/dri \
@@ -56,6 +56,7 @@ while [ $# -gt 0 ]; do
       ;;
     *)
       echo Config selecionada ["$1"]
+      DOCKERFILE="$1"
       shift # past argument
       ;;
   esac
