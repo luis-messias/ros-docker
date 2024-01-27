@@ -1,12 +1,12 @@
 #!/bin/bash
 
 build() {
-    docker build -t ros_docker:ros_noetic_nvidia .
+    docker build -t ros_docker:ros_noetic_nvidia -f DockerFiles/${DOCKERFILE} .
 }
 
 kill() {
-    docker container stop ros_noetic
-    docker container remove ros_noetic
+    docker container stop ${DOCKERFILE}
+    docker container remove ${DOCKERFILE}
 }
 
 start() {
@@ -19,15 +19,16 @@ start() {
         --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
         --volume="$(pwd)/catkin_ws:/root/catkin_ws:rw" \
         -v ~/.gitconfig:/etc/gitconfig \
-        --name ros_noetic \
+        --name ${DOCKERFILE} \
         --device=/dev/dri:/dev/dri \
-        ros_docker:ros_noetic_nvidia zsh
+        ros_docker:${DOCKERFILE} zsh
 }
 
 attach_shell(){
-    docker exec -it ros_noetic zsh 
+    docker exec -it ${DOCKERFILE} zsh 
 }
 
+DOCKERFILE="ros_noetic_nvidia"
 while [ $# -gt 0 ]; do 
     case $1 in
     -b|--build)
@@ -54,7 +55,7 @@ while [ $# -gt 0 ]; do
       exit 0
       ;;
     *)
-      echo Agumento inválido ["$1"]
+      echo Config selecionada ["$1"]
       shift # past argument
       ;;
   esac
