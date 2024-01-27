@@ -104,5 +104,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$PATH:~/bin:/sbin/"
 source /opt/ros/noetic/setup.zsh
-source /root/catkin_ws/devel/setup.zsh
+source /root/ros_ws/devel/setup.zsh
 alias python=python3

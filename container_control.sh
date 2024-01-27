@@ -1,7 +1,7 @@
 #!/bin/bash
 
 build() {
-    docker build -t ros_docker:ros_noetic_nvidia -f DockerFiles/${DOCKERFILE} .
+    docker build -t ros_docker:${DOCKERFILE} -f DockerFiles/${DOCKERFILE} .
 }
 
 kill() {
@@ -11,13 +11,13 @@ kill() {
 
 start() {
     xhost +
-    mkdir -p "$(pwd)/catkin_ws/src"
+    mkdir -p "$(pwd)/ros_ws/src"
     docker run -it --detach --net=host --gpus all --privileged \
         --env="NVIDIA_DRIVER_CAPABILITIES=all" \
         --env="DISPLAY" \
         --env="QT_X11_NO_MITSHM=1" \
         --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-        --volume="$(pwd)/Workspaces/${DOCKERFILE}_ws:/root/catkin_ws:rw" \
+        --volume="$(pwd)/Workspaces/${DOCKERFILE}_ws:/root/ros_ws:rw" \
         -v ~/.gitconfig:/etc/gitconfig \
         --name ${DOCKERFILE} \
         --device=/dev/dri:/dev/dri \
@@ -59,6 +59,6 @@ while [ $# -gt 0 ]; do
       DOCKERFILE="$1"
       shift # past argument
       ;;
-  esac
+    esac
 done
 

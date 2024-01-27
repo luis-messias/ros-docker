@@ -104,5 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$PATH:~/bin:/sbin/"
 source /opt/ros/humble/setup.zsh
-source /root/catkin_ws/devel/setup.zsh
+source /root/ros_ws/install/setup.zsh
 alias python=python3
+eval "$(register-python-argcomplete3 ros2)"
+eval "$(register-python-argcomplete3 colcon)"

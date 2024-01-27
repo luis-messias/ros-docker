@@ -22,4 +22,4 @@ RUN apt-get install -y git zsh curl mesa-utils xserver-xorg-video-all libgl1-mes
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 COPY ConfigFiles/ros_noetic_nvidia/.zshrc /root/.zshrc
 
-WORKDIR /root/catkin_ws
+WORKDIR /root/ros_ws
