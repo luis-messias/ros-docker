@@ -1,7 +1,7 @@
 #!/bin/bash
 
 build() {
-    docker build -t ros_docker:${DOCKERFILE} -f DockerFiles/${DOCKERFILE} .
+    docker build -t ros_docker:${DOCKERFILE} -f DockerFiles/${DOCKERFILE}.Dockerfile .
 }
 
 kill() {
